@@ -1,12 +1,6 @@
 import moment from 'moment';
-import { getData } from "./getData.mjs";
 
-
-const url = 'https://luegopago.blob.core.windows.net/luegopago-uploads/Pruebas%20LuegoPago/data.json';
-const citasAsignadas = await getData(url)
-
-
-function calcularEspaciosDisponibles(citasAsignadas, diaConsulta) {
+export function calcularEspaciosDisponibles(citasAsignadas, diaConsulta) {
 
     const inicioAtencion = moment('09:00', 'HH:mm');
     const finAtencion = moment('17:00', 'HH:mm');
@@ -34,10 +28,5 @@ function calcularEspaciosDisponibles(citasAsignadas, diaConsulta) {
         espaciosDisponibles += parseInt(tiempoDisponible/30)
     }
 
-    return espaciosDisponibles;
+    return { diaConsulta, espaciosDisponibles };
   }
-
-  // Ejemplo de uso 
-  const diaConsulta = 'martes';
-  const totalEspaciosDisponibles = calcularEspaciosDisponibles(citasAsignadas, diaConsulta);
-  console.log(`Total de espacios disponibles para el ${diaConsulta}: ${totalEspaciosDisponibles}`);

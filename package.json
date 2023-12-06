@@ -2,7 +2,7 @@
   "name": "pruebatecnica1-luegopago",
   "version": "1.0.0",
   "description": "Esta es la solución de la prueba técnica solicitada por QCODE para el ingreso a su equipo de desarrollo.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
