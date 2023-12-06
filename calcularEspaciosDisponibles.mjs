@@ -1,9 +1,9 @@
-import moment from 'moment';
+import { toNumber } from './conversions.mjs';
 
 export function calcularEspaciosDisponibles(citasAsignadas, diaConsulta) {
-
-    const inicioAtencion = moment('09:00', 'HH:mm');
-    const finAtencion = moment('17:00', 'HH:mm');
+    
+    const inicioAtencion = toNumber('09:00')
+    const finAtencion = toNumber('17:00')
 
     let espaciosDisponibles = 0;
     let tiempoDisponible = 0;
@@ -13,16 +13,16 @@ export function calcularEspaciosDisponibles(citasAsignadas, diaConsulta) {
     let horaInicio = inicioAtencion
 
     for (const cita of citasDia) {
-        tiempoDisponible = (moment(cita.Hour, 'HH:mm') - horaInicio) / 60000; // Calcular tiempo disponible en minutos
+        tiempoDisponible = toNumber(cita.Hour) - horaInicio; // Calcular tiempo disponible en minutos
         
         if (tiempoDisponible >= 30) {
             espaciosDisponibles += parseInt(tiempoDisponible / 30);
         }
 
-        horaInicio = moment(cita.Hour, 'HH:mm').add(cita.Duration, 'minutes');
+        horaInicio = toNumber(cita.Hour) + parseInt(cita.Duration);
     }
 
-    tiempoDisponible = (finAtencion - horaInicio)/60000; // Calcula el tiempo disponible desde la ultima cita asiganada hasta la hora de cierre.
+    tiempoDisponible = finAtencion - horaInicio; // Calcula el tiempo disponible desde la ultima cita asiganada hasta la hora de cierre.
     
     if (tiempoDisponible >= 30) {
         espaciosDisponibles += parseInt(tiempoDisponible/30)
