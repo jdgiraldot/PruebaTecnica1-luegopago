@@ -1,0 +1,16 @@
+{
+  "name": "pruebatecnica1-luegopago",
+  "version": "1.0.0",
+  "description": "Esta es la solución de la prueba técnica solicitada por QCODE para el ingreso a su equipo de desarrollo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jhonatan Giraldo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4"
+  },
+  "type": "module"
+}
